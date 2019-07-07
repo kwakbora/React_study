@@ -1,60 +1,39 @@
-## 1. React 소개
+## React 강좌
 
-페이스북과 인스타그램에서 사용자 경험을 향상하기 위해 만든 라이브러리입니다.
-이벤트 요청 시 서버에서 코드를 받아 다시 렌더링해야 되는 문제를 해결하기 위해 만들어졌습니다.
+HTML, JavaScript 에 대한 이해가 필요합니다. 이 강좌에서 사용되는 리액트 버전은 16.3 이상 버전 입니다.
 
+### section01. 리액트는 무엇인가 
 
+--> [작업 확인하기](https://github.com/kwakbora/React_study/blob/master/section01/README.md)
 
-#### 프레임워크가 아니다.
+### section02. 리액트 프로젝트 시작하기
 
-사용자 인터페이스 라이브러리입니다.
-UI 컴포넌트를 만드는 일만 하며 캡슐화를 잘 시켜줘서 재사용 성이 높습니다.
-한가지 일만하여 단순하고 여러 자바스크립트 프레임워크나 라이브러리와 함께 사용할 수 있습니다.
-그래서 React를 사용하기 위해서 기존 코드를 모두 바꿀 필요 없이 필요한 부분부터 조금씩 사용이 가능합니다.
+--> [작업 확인하기](https://github.com/kwakbora/React_study/blob/master/section02/README.md)
 
+### section03. JSX 기본문법 알아보기
 
+--> [작업 확인하기](https://github.com/kwakbora/React_study/blob/master/section03/README.md)
 
-#### 왜 MVC 프레임워크가 아닌가?
+### section04. props 와 state 사용하는 방법
 
-MVC는 확장이 어렵고 거대한 시스템에 어울리지 않는다고 페이스북은 결론을 내렸습니다.
+--> [작업 확인하기](https://github.com/kwakbora/React_study/blob/master/section04/README.md)
 
-이유는 새로운 기능 추가 시 시스템의 복잡도가 기하 급 수적으로 증가하여 개발자는 기존 기능에 대한 영향을 주지 않을지에 대한 불안감을 주게 됩니다.
+### section05. Lifecycle API 소개 및 사용법
 
-모델(Model)과 뷰(View)의 수가 커지고 데이터의 흐름이 양방향으로 이루어질 수록 복잡도는 더욱 증가하고 디버깅 및 코드를 이해하기 어려워지므로 MVC는 작은 앱에 어울린다고 판단했습니다.
+--> [작업 확인하기](https://github.com/kwakbora/React_study/blob/master/section05/README.md)
 
+### section06. 리액트 작업환경 직접 설정하기
 
+--> [작업 확인하기](https://github.com/kwakbora/React_study/blob/master/section06/README.md)
 
-## 2. React 특징
+### section07. 인풋 상태 관리
 
-#### JSX: 템플릿을 사용하지 않는다.
+--> [작업 확인하기](https://github.com/kwakbora/React_study/blob/master/section07/README.md)
 
-자바스크립트는 강력한 언어라는 전제로 템플릿을 사용하지 않습니다.
-템플릿을 사용하지 않아 뷰 로직과 뷰 문법을 통합하여 확장 및 유지 보수가 쉬워졌습니다.
-템플릿이라고 오해할 수 있는 JSX를 원하면 사용할 수 있습니다.
-JSX(JavaScript XML)는 페이스북에서 스펙을 정의한 XML과 비슷한 자바스크립트 확장 문법입니다.
-자바스크립트에서 HTML과 자바스크립트 변수 및 속성 값을 사용 할수 있게 해주며 *.jsx 파일은 Webpack, Browserify 로 자바스크립트로 컴파일 후 *.js 변환되어 사용하며 테스트 코드는 Babel로  별도의 컴파일 없이 사용할 수 있습니다. 그리고 이 툴 들이 ECMAScript6,7 지원을 하기 때문에 JSX를 사용시에 ECMAScript6,7도 같이 사용을 많이 합니다. 
+### section08. 배열 데이터 랜더링 및 관리
 
+--> [작업 확인하기](https://github.com/kwakbora/React_study/blob/master/section08/README.md)
 
+### section09. 최적화,활용,Ref
 
-#### Virtual DOM: 전체 DOM을 다시 그리지 않는다.
-
-데이터가 변할 때 바뀐 부분만을 업데이트하여 "새로 고침" 하지 않아도 변경된 내용 확인이 가능합니다. 그래서 React를 적용하면 성능 향상을 볼 수 있으며 React의 큰 특징입니다.
-이것은 가상 DOM(Virtual DOM)에 DOM Tree와 같은 전체 구조체를 가지고 있고 변경이 생기면 구조체를 비교(Diff)하여 최소한의 요소만 DOM에 적용합니다.
-
-
-
-#### Unidirectional Data Flow: 데이터가 양방향으로 흐르지 않는다.
-
-양방향: 상위 컴포넌트에서 하위 컴포넌트로 혹은 하위 컴포넌트에서 상위 컴포넌트로
-단방향: 상위 컴포넌트에서 하위 컴포넌트로
-
-양방향 데이터 바인딩을 하게 되면 개발 비용은 일시적으로 적다고 느낄 수 있지만, 장기적으로 데이터 흐름을 이해하기 어려워 개발 비용이 증가합니다.
-그래서 React는 위에서 아래로만 데이터가 흐르고, 아래에서 위로 올라갈 수는 없습니다.
-
-
-
-#### Server Side Rendering: 클라이언트에서만 실행되는 것은 아니다.
-
-클라이언트에서만 렌더링을 하게 되면 `HTML + Javascript + Data + View` 순으로 진행하는 시간 소요로 초기 구동 속도가 느리다. React가 빠르다는 건 초기 구동 이후다.
-또한, 자바스크립트를 실행하지 못하는 검색 엔진 봇들은 처음 렌더링 된 빈 HTML만 수집하기 때문에 콘텐츠가 없다고 판단하므로 검색 엔진 최적화(SEO)에 취약하다.
-이런 단점을 해결하기 위해 서버 측에서 렌더링을 지원한다.
+--> [작업 확인하기](https://github.com/kwakbora/React_study/blob/master/section09/README.md)
