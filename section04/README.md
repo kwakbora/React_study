@@ -57,3 +57,46 @@ export default App;
 ### 02. defaultProps
 
 가끔씩은 실수로 props 를 빠트려먹을때가 있습니다. 혹은, 특정 상황에 props 를 일부러 비워야 할 때도 있구요. 그러한 경우에, props 의 기본값을 설정해줄 수 있는데요, 그것이 바로 defaultProps 입니다.
+
+```jsx
+import React, { Component } from 'react';
+
+class MyName extends Component {
+  static defaultProps = {
+    name: '기본이름'
+  }
+  render() {
+    return (
+      <div>
+        안녕하세요! 제 이름은 <b>{this.props.name}</b> 입니다.
+      </div>
+    );
+  }
+}
+
+export default MyName;
+```
+
+이렇게 하면 만약에 App.js에서  `<MyName />` 이런식으로 name 값을 생략해버리면 “기본이름” 이 나타나게 될 것입니다. 참고로, defaultProps 는 다음과 같은 형태로도 설정 할 수 있습니다.
+
+```jsx
+import React, { Component } from 'react';
+
+class MyName extends Component {
+  render() {
+    return (
+      <div>
+        안녕하세요! 제 이름은 <b>{this.props.name}</b> 입니다.
+      </div>
+    );
+  }
+}
+
+MyName.defaultProps = {
+  name: '기본이름'
+};
+
+export default MyName;
+```
+
+static 을 쓰는 형태는 최신 자바스크립트로 아래 코드로 나중에 Babel이 랜더링을 하게되어, 같은 형태로 나오게 되니, 동일한 코드라 할 수 있다.
