@@ -173,7 +173,10 @@ export default Counter;
 import React, { Component } from 'react';
 
 class Counter extends Component {
-    {/* super(props)를 호출한 이유는 우리가 컴포넌트를 만들게 되면, component를 상속했으며, 우리가 이렇게 constructor를 작성하게 되면 기존의 클래스 생성자를 덮어쓰게 됩니다. 그렇기에 리액트 컴포넌트가 지니고있던 생성자를 super를 통하여 미리 실행하고 그 다움에 우리가 할 작업(state 설정)을 해주는 것입니다.*/}
+    {/* super(props)를 호출한 이유는 우리가 컴포넌트를 만들게 되면, component를 상속했으며, 
+    우리가 이렇게 constructor를 작성하게 되면 기존의 클래스 생성자를 덮어쓰게 됩니다. 
+    그렇기에 리액트 컴포넌트가 지니고있던 생성자를 super를 통하여 미리 실행하고 
+    그 다음에 우리가 할 작업(state 설정)을 해주는 것입니다.*/}
 constructor(props) {
     super(props);
     this.handleIncrease = this.handleIncrease.bind(this);
