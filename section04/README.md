@@ -299,4 +299,45 @@ this.setState({
 })
 ```
 
+### 06.이벤트 설정하기
+
+render 함수에서 이벤트 설정을 한 부분을 확인해봅시다.
+
+```jsx
+render() {
+    return (
+      <div>
+        <h1>카운터</h1>
+        <div>값: {this.state.number}</div>
+        <button onClick={this.handleIncrease}>+</button>
+        <button onClick={this.handleDecrease}>-</button>
+      </div>
+    );
+  }
+```
+
+리액트에서 이벤트 함수를 설정할때 html 과 다음과 같은 사항이 다릅니다.
+
+- 이벤트이름을 설정 할 때 camelCase 로 설정해주어야 합니다. onclick 은 onClick, onmousedown 은 onMouseDown, onchange 는 onChange 이런식으로 말이죠.
+- 이벤트에 전달해주는 값은 **함수** 여야 합니다. 만약에 `onClick={this.handleIncrease()}` 이런식으로 하게 된다면, 렌더링을 할 때 마다 해당 함수가 호출이됩니다. 그렇게 되면 정말 큰 일이 발생합니다. 렌더링 -> 함수 호출 -> setState -> 렌더링 -> 함수 호출 -> 무한반복.. 이렇게 되버리는 것이죠!
+
+그러니까 꼭 주의해야 합니다. 렌더링 함수에서 이벤트를 설정 할 때 우리가 만든 메소드 호출금지!!
+
+App.js 에서 아래와 같이 불러와 랜더링 하면 카운트 완성!!
+
+```jsx
+import React, { Component } from 'react';
+import Counter from './Counter';
+
+class App extends Component {
+  render() {
+    return (
+      <Counter />
+    );
+  }
+}
+
+export default App;
+```
+
 
