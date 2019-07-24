@@ -32,6 +32,8 @@ nvm install --lts
 
 
 
+
+
 ## 02.Yarn 설치하기
 
 다시 Node.js 로 돌아가서 설치가 완료되면 노드 모듈관리자인 npm이 설치가 됩니다.
@@ -44,11 +46,15 @@ nvm install --lts
 
 
 
+
+
 ## 03.에디터 설치
 
 강좌에서는 VSCode 사용
 
 그리고 윈도우의 경우 , Git Bash를 설치합니다. (편의상 설치)
+
+
 
 
 
@@ -67,3 +73,9 @@ yarn -v
 ```
 
 버전 8이상이면 됩니다.
+
+
+
+<https://github.com/facebook/create-react-app>
+
+위 페이지에서 설치하는 방법이 자세히 나와있음.
