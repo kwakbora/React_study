@@ -38,7 +38,7 @@ nvm install --lts
 
 라이브러리 버전관리를 위해 npm을 사용하는데 npm 대신에 yarn 을 사용합니다,
 
-<https://yarnpkg.com/lang/en/>
+<https://yarnpkg.com/en/docs/install#windows-stable>
 
 더 나은 속도 더 나은 캐싱시스템을 위해 yarn 을 사용합니다. 우리나라는 인터넷속도가 빨라 문제는 안되지만 성능이나 인터넷 속도가 느릴때 사용하면 좋습니다.
 
