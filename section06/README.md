@@ -38,7 +38,7 @@ nvm install --lts
 
 라이브러리 버전관리를 위해 npm을 사용하는데 npm 대신에 yarn 을 사용합니다,
 
-<https://yarnpkg.com/en/docs/install#windows-stable>
+<https://yarnpkg.com/lang/en/>
 
 더 나은 속도 더 나은 캐싱시스템을 위해 yarn 을 사용합니다. 우리나라는 인터넷속도가 빨라 문제는 안되지만 성능이나 인터넷 속도가 느릴때 사용하면 좋습니다.
 
@@ -48,4 +48,22 @@ nvm install --lts
 
 강좌에서는 VSCode 사용
 
-그리고 윈도우의 경우 ,Git Bash를 설치합니다. (편의상 설치)
+그리고 윈도우의 경우 , Git Bash를 설치합니다. (편의상 설치)
+
+
+
+## 04.설치가 잘 되었는지 확인하자!
+
+설치한 폴더에서 Git Bash를 열어 
+
+```
+node -v
+v10.16.0  /* 버전 확인 */
+```
+
+```
+yarn -v
+1.16.0  /* 버전 확인 */
+```
+
+버전 8이상이면 됩니다.
