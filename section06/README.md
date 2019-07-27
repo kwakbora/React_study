@@ -78,4 +78,41 @@ yarn -v
 
 <https://github.com/facebook/create-react-app>
 
-위 페이지에서 설치하는 방법이 자세히 나와있음.
+위 페이지에서 설치하는 방법이 자세히 나와있습니다.
+
+## 05.React 사용하기
+
+파일을 생성하여 react를 설치해 봅니다.
+
+1.원하는 폴더를 생성합니다.
+
+```
+mkdir react-tutorials
+```
+
+2.폴더 내 React 프로젝트 명 폴더를 생성합니다.
+
+```
+cd contact-app
+```
+
+3.React를 시작합니다.
+
+```
+npm create-react-app contact-app
+```
+
+4.설치가 되고 마지막에 yarn start 를 하겠냐는 문구가 나오면 아래와 같이 입력합니다.
+
+(yarn 개발서버 환경 설정)
+
+```
+cd contact-app
+yarn start
+```
+
+5.브라우저가 뜨면서 React 사용할 수 있는 환경이 만들어집니다.
+
+6.VScode로 가서 contact-app 폴더를 열어 살펴보면 src 폴더내 index.js 에서 확인 할 수 있습니다.
+
+7.create-react-app 설정하여 사용하게 되면 React 에서 사용하는 webpack과 babel설정은node_modules > react-script > config 안에서 확인 하실 수 있습니다.
