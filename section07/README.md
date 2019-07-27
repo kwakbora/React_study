@@ -13,6 +13,7 @@ class PhoneForm extends Component {
   }
   handleChange = (e) => {
     this.setState({
+        {/* name : e.target.value */}
       [e.target.name]: e.target.value
     });
   }
