@@ -8,7 +8,8 @@ import React, { Component } from 'react';
 
 class PhoneForm extends Component {
   state = {
-    name: ''
+    name: '',
+    phone:''
   }
   handleChange = (e) => {
     this.setState({
