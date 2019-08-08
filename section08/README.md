@@ -129,3 +129,160 @@ handleCreate = (data) => {
 ### 03.데이터 렌더링
 
 이제는 위 배열을 컴포넌트로 변환해서 바꿔주겠습니다. 이 튜토리얼 초반부에서도 언급했지만, 리액트를 다루는건 자바스크립트를 사용하는거랑 매우 비슷합니다. 컴포넌트를 여러개 렌더링 하기 위해서는, 앵귤러 뷰 처럼 디렉티브 같은걸 사용 할 필요 없이, 그냥 자바스크립트 배열의 내장함수인 map 을 사용하면 됩니다.
+
+#### 1_1. Map 함수 알아보기
+
+배열을 가지고 내부에 있는 원소들에 2씩 곱하고 싶다고 가정해 봅시다.
+
+```jsx
+const a = [1,2,3,4,5];
+const b = [];
+
+b.forEach(number => b.push(number * 2));
+```
+
+하지만, forEach 대신에 map 을 사용하시면 조금 더 쉽게 해결 할 수 있습니다.
+
+```jsx
+const a = [1,2,3,4,5];
+const b = a.map(number => number * 2);
+```
+
+
+
+#### 1_2. 컴포넌트 만들기
+
+- **PhoneInfo**: 각 전화번호 정보를 보여주는 컴포넌트입니다.
+- **PhoneInfoList**: 여러개의 PhoneInfo 컴포넌트들을 보여줍니다.
+
+PhoneInfo.js
+
+```jsx
+// file: src/components/PhoneInfo.js
+import React, { Component } from 'react';
+
+class PhoneInfo extends Component {
+  static defaultProps = {
+    info: {
+      name: '이름',
+      phone: '010-0000-0000',
+      id: 0
+    }
+  }
+  
+  render() {
+    const style = {
+      border: '1px solid black',
+      padding: '8px',
+      margin: '8px'
+    };
+
+    const { name, phone, id } = this.props.info;
+    
+    return (
+      <div style={style}>
+        <div><b>{name}</b></div>
+        <div>{phone}</div>
+      </div>
+    );
+  }
+}
+
+export default PhoneInfo;
+```
+
+우리는 info 라는 객체를 props 로 받아와서 렌더링 해줄것입니다. 그런데, 우리가 실수로 info 값을 전달해주는것을 까먹게 된다면 컴포넌트가 크래쉬 될 것입니다. info 가 undefined 일 때에는 비구조화 할당을 통해 내부의 값을 받아올 수 없기 때문입니다.
+
+그렇기 때문에 defaultProps 를 통하여 info 의 기본값을 설정해주었습니다.
+
+
+
+PhoneInfoList.js
+
+```jsx
+// src/components/PhoneInfoList.js
+import React, { Component } from 'react';
+import PhoneInfo from './PhoneInfo';
+
+class PhoneInfoList extends Component {
+  static defaultProps = {
+    data: []
+  }
+
+  render() {
+    const { data } = this.props;
+    const list = data.map(
+      info => (<PhoneInfo key={info.id} info={info}/>)
+    );
+
+    return (
+      <div>
+        {list}    
+      </div>
+    );
+  }
+}
+
+export default PhoneInfoList;
+```
+
+defaultProps 를 선언할 때에는 앞에 static을 써줘야 합니다. defaultProps는 data의 값이 없을때 에러뜨는 현상을 방지하기 위해 선언합니다.
+
+그리고 key 를 지정하는 이유는 우리가 데이터를 추가 할 때마다 고정적인 고유 값을 부여해주면, 리액트가 변화를 감지해내고 업데이트를 하게 될 때 조금 더 똑똑하게 처리 할 수 있게됩니다.
+
+
+
+이제 PhoneInfoList 컴포넌트를 App 에서 렌더링해주세요. 그리고, data 값을 props 로 전달하세요.
+
+```JSX
+// file: src/App.js
+import React, { Component } from 'react';
+import PhoneForm from './components/PhoneForm';
+import PhoneInfoList from './components/PhoneInfoList';
+
+class App extends Component {
+  id = 2
+  state = {
+    information: [
+      {
+        id: 0,
+        name: '김민준',
+        phone: '010-0000-0000'
+      },
+      {
+        id: 1,
+        name: '홍길동',
+        phone: '010-0000-0001'
+      }
+    ]
+  }
+  handleCreate = (data) => {
+    const { information } = this.state;
+    this.setState({
+      information: information.concat({ id: this.id++, ...data })
+    })
+  }
+  render() {
+    return (
+      <div>
+        <PhoneForm
+          onCreate={this.handleCreate}
+        />
+        <PhoneInfoList data={this.state.information}/>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+가끔씩은, 데이터에 고유 값이 없을 수 도 있습니다. 그럴 때에는 만약에 key 값을 빼먹으면 렌더링이 되긴 하지만 개발자도구 콘솔에서 경고창이 뜨게 됩니다. 만약에 그 경고가 보고싶지 않다면 다음과 같이 작업 할 수 있습니다.
+
+```jsx
+const list = data.map(
+      (info, index) => (<PhoneInfo key={index} info={info}/>)
+    );
+```
+
+`위처럼 하면 단순히 경고만 감출 뿐이고 성능상으로는 key 가 없는 것과 동일합니다.`
