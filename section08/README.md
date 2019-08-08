@@ -284,5 +284,4 @@ const list = data.map(
       (info, index) => (<PhoneInfo key={index} info={info}/>)
     );
 ```
-
-`위처럼 하면 단순히 경고만 감출 뿐이고 성능상으로는 key 가 없는 것과 동일합니다.`
+**위처럼 하면 단순히 경고만 감출 뿐이고 성능상으로는 key 가 없는 것과 동일합니다.**
