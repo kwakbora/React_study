@@ -30,6 +30,7 @@ function CounterTest(){
             inpname : '',
             nickname : '',
         });
+        
         nameInput.current.focus(); //초기화시 포커스 이동(current 는 해당 DOM 선택 )
     }
 
