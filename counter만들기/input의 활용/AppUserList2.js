@@ -46,7 +46,7 @@ const onCreate = ()=>{
   }
   //방법1  setUsers({...users,user}); //기존항목 유지하면서 추가한다
   //방법2
-  setUsers(users.concat(user)); //배열의 합친다 (push를 사용하면 업데이트가 되지 않아 concat을 사용한다)
+  setUsers(users.concat(user)); //배열의 합친다 (push를 사용하면 업데이트가 되지 않아 concat을 사용한다) 
   setInputs({
     username:'',
     email:''
