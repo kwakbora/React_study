@@ -8,32 +8,10 @@ function User({ userdiv }){
     );
 }
 
-function UserList(){
-    const users = [
-        {
-            id: 1,
-            username : 'bora',
-            email: 'bora@naver.com'
-
-        },
-        {
-            id: 2,
-            username : 'test',
-            email: 'test@naver.com'  
-        },
-        {
-            id: 3,
-            username : 'liz',
-            email: 'liz@naver.com'  
-        }
-    ]
+function UserList({users}){
 
     return(
         <div>
-         {  /* <User userdiv={users[0]} />
-            <User userdiv={users[1]} />
-            <User userdiv={users[2]} /> */ }
-
             {
                 users.map(user => (<User userdiv={user} key={user.id} />))
                //key 라는 prop이 있어야 한다. 각 원소들이 가지고 있는 값이 ID이기 때문에 id로 설정해준다.
@@ -41,6 +19,7 @@ function UserList(){
             }
         </div>
     );
+
 }
 
 export default UserList;
