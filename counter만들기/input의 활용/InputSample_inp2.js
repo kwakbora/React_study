@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function InputSample(){
+function InputSample(){ 
     const [inputs, setInputs] = useState({
         name : '',
         nickname: '',
