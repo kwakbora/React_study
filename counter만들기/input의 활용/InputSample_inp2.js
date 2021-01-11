@@ -12,7 +12,7 @@ function InputSample(){
 
         //console.log(e.target.name);
         //console.log(e.target.value);
-        setInputs ({
+        setInputs ({ 
             ...inputs, // 객체 상태 업데이트:기존값을 먼저 설정을 해줘야 한다.
             [name]:value, //다른 키값을 쓰겠다 []
         });
