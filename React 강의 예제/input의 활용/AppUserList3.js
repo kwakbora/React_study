@@ -78,7 +78,10 @@ const onToggle = id =>{
       // 전체 배열을 업데이트 하면서 새로운 배열을 만든다.
     ));
 }
-const count = countActiveUsers(user);
+//const count = countActiveUsers(user);
+// 위에 처럼 하면 input 값을 바꿀때마다 countActiveUsers 가 작동한다. 성능 최적화를 위해 useMemo를 쓴다
+const count = useMemo(() => countActiveUsers(user),[user]);
+  
   return(
     <div>
       <CreateUser 
