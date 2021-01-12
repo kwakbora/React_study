@@ -2,6 +2,11 @@ import React,{useRef, useState} from 'react';
 import CreateUser from './CreateUser';
 import UserList from './UserList3';
 
+function countActiveUsers(user){
+  console.log('활성 사용자 수 세는중');
+  return user.filter( rm => rm.active).length
+}
+
 function APP(){
   const [inputs, setInputs] = useState({
     username:'',
@@ -73,7 +78,7 @@ const onToggle = id =>{
       // 전체 배열을 업데이트 하면서 새로운 배열을 만든다.
     ));
 }
-
+const count = countActiveUsers(user);
   return(
     <div>
       <CreateUser 
@@ -83,6 +88,7 @@ const onToggle = id =>{
         onCreate={onCreate} 
       />
       <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
+      <div>활성사용자 수 : {count}</div>
     </div>
   );
 }
