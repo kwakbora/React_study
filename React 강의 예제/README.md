@@ -1,4 +1,4 @@
-## 1. props test
+## 1. props
 
 ### _01. props 의 기본 사용법
 
