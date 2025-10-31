@@ -90,7 +90,5 @@ export default {
 
 #### index.css 추가
 ```
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 ```
