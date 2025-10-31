@@ -43,6 +43,10 @@ Yarn 설치는 [Yarn Installation](https://yarnpkg.com/en/docs/install) 페이�
 ```
 npm install -g create-react-app
 ```
+```
+(2025년 업데이트 vita 버전)
+npm create vite@latest
+```
 
 만약에 yarn 을 통하여 설치하고 싶다면 다음과 같이 입력하시면 됩니다.
 
@@ -66,3 +70,27 @@ yarn start
 ```
 
 를 입력하시게 되면, 리액트 프로젝트가 시작 될 것입니다.
+
+## 2. tailwind 설치
+```
+npm install -D tailwindcss
+npx tailwindcss init                   # tailwind.config.js 생성
+```
+
+#### tailwind.config.js 파일에 코드 추가
+```
+export default {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+#### index.css 추가
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
