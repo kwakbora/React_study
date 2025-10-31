@@ -71,10 +71,17 @@ yarn start
 
 를 입력하시게 되면, 리액트 프로젝트가 시작 될 것입니다.
 
-## 2. tailwind 설치
+## 2. next.js 설치
+```
+npx create-next-app@latest .
+npx create-next-app@latest my-next-app (아예 폴더를 지정하는 방법)
+```
+
+## 3. tailwind 설치
 ```
 npm install -D tailwindcss
 npx tailwindcss init                   # tailwind.config.js 생성
+npm install tailwindcss @tailwindcss/vite (2025 ver4 업데이트 된 버전! tailwind.config.js 설치가 사라져서 아래 내용 추가 하지 않아도 됨)
 ```
 
 #### tailwind.config.js 파일에 코드 추가
