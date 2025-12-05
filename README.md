@@ -131,20 +131,20 @@ export default preview;
 MSW 애드온을 등록하고 Next.js 환경 설정을 명시합니다.
 
 ```typescript
-import type { StorybookConfig } from "@storybook/nextjs";
+import type { StorybookConfig } from "@storybook/nextjs-vite";
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.stories.@(js|jsx|ts|tsx)", "../src/**/*.mdx"],
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
     "msw-storybook-addon",
+    "@chromatic-com/storybook",
     "@storybook/addon-docs",
     "@storybook/addon-a11y",
+    "@storybook/addon-vitest",
   ],
   framework: {
-    name: "@storybook/nextjs",
-    options: {
-      nextConfigPath: "../next.config.ts",
-    },
+    name: "@storybook/nextjs-vite",
+    options: {},
   },
   staticDirs: ["../public"],
   features: {
