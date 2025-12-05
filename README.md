@@ -155,6 +155,85 @@ const config: StorybookConfig = {
 export default config;
 ```
 
+### 6.3. Storybook 활용하기
+예제를 사용하지 않는다면 stories 디렉토리는 과감히 삭제
+프로젝트의 components 폴더에 Button 디렉토리를 만들고, 새로운 파일 Button.tsx을 작성한다.
+```typescript
+import React from 'react';
+
+interface IButtonProps {
+	text: string;
+}
+
+function Button(props: IButtonProps) {
+	const { text } = props;
+
+	return (
+		<button type="button" onClick={() => alert(`안녕 나는 ${text}`)}>
+			{text}
+		</button>
+	);
+}
+
+export default Button;
+```
+
+이러한 컴포넌트를 스토리북에서 테스트하려면, 해당 버튼에 대한 story를 만들어주어야 한다.
+Button 디렉토리에 새로운 파일 Button.stories.tsx을 작성함
+
+```typescript
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+
+import Button from './Button';
+
+const meta: Meta<typeof Button> = {
+	component: Button,
+};
+
+export default meta;
+type Story = StoryObj<typeof Button>;
+
+export const Primary: Story = {
+	name: 'Button',
+	render: () => <Button />,
+};
+```
+매번 작성하기 힘드니,스니펫으로 자동 완성함. 프로젝트 루트의 .vscode에 새로운 파일 storybook.code-snippets을 만들어 작성
+sbd만 입력하면 자동 만들어줌
+
+```typescript
+{
+	"Storybook Default": {
+	  "scope": "typescript,typescriptreact",
+	  "prefix": "sbd",
+	  "body": [
+		"import React from 'react';",
+		"import type { Meta, StoryObj } from '@storybook/react';",
+		"",
+		"import ${1:${TM_FILENAME_BASE/.(?:story|stories).*//gi}} from './${1:${TM_FILENAME_BASE/.(?:story|stories).*//gi}}';",
+		"",
+		"const meta: Meta<typeof ${1:${TM_FILENAME_BASE/.(?:story|stories).*//gi}}> = {",
+		"\tcomponent:${1:${TM_FILENAME_BASE/.(?:story|stories).*//gi}},",
+		"};",
+		"",
+		"export default meta;",
+		"type Story = StoryObj<typeof ${1:${TM_FILENAME_BASE/.(?:story|stories).*//gi}}>;",
+		"",
+		"export const Primary: Story = {",
+		"\tname:'${1:${TM_FILENAME_BASE/.(?:story|stories).*//gi}}',",
+		"\trender:()=> <${1:${TM_FILENAME_BASE/.(?:story|stories).*//gi}}/>",
+		"}"
+	  ],
+	  "description": "storybook default snippet for React+TS By Jeonny"
+	},
+  }
+```
+```cmd
+// 스토리북 실행
+npm run storybook
+
+```
 ## 7. 스타일 설정 src/app/globals.css
 
 ```css
